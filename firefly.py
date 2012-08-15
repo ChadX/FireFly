@@ -25,17 +25,17 @@ class Firefly:
         deltaX = 0
         deltaY = 0
         for f in ffList:
-            if f != self:                                                  #the firefly "f" cannot attract to "g" (itself)               
+            if f != self:                                                  #the firefly "f" cannot attract to "g" (itself)
                 vectorX = (f.x - self.x)
                 vectorY = (f.y - self.y)
                 currentLen = math.sqrt(vectorX**2 + vectorY**2)         #euclidean distance between the 2 fireflies
 
                 if currentLen > 50:                                     #fireflies attract each other if their distance is more than 50 pixels apart
-                    relBrightness = (f.brightness/currentLen)           #relative brightness of the fireflies is inversely proportional to the currentLen                     
+                    relBrightness = (f.brightness/currentLen)           #relative brightness of the fireflies is inversely proportional to the currentLen
                     vectorX = vectorX/currentLen                        #normalizing the x vector
                     vectorY = vectorY/currentLen                        #normalizing the y vector
                     deltaX += relBrightness * vectorX
-                    deltaY += relBrightness * vectorY                
+                    deltaY += relBrightness * vectorY
                 else:                                                   #fireflies repel each other if their distance is between 1 to 50 pixels
                     deltaX = random.randrange(-3,4)
                     deltaY = random.randrange(-3,4)
